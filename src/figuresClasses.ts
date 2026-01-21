@@ -25,8 +25,16 @@ export class Triangle implements Figure {
     private b: number,
     private c: number,
   ) {
-    if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
-      throw new Error('Invalid triangle sides');
+    if (this.a <= 0 || this.b <= 0 || this.c <= 0) {
+      throw new Error('Triangle sides must be positive');
+    }
+
+    if (
+      this.a + this.b <= this.c ||
+      this.a + this.c <= this.b ||
+      this.b + this.c <= this.a
+    ) {
+      throw new Error('The provided sides do not form a valid triangle');
     }
   }
 
